@@ -1,0 +1,39 @@
+<div class="card-container">
+  <div class="card card-small" tabindex="0">
+    <svg
+      class="material-icons"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+    >
+      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+    </svg>
+
+    <div class="row">{{ entriesService.employeesEntries[0].name }}</div>
+
+    <div class="row">
+      {{ entriesService.employeesEntries[0].birthDate | date: "dd/MM/yyyy" }}
+    </div>
+
+    <div class="row">{{ entriesService.employeesEntries[0].gender }}</div>
+    <div class="row">
+      {{ entriesService.employeesEntries[0].profitShare | percent }}
+    </div>
+  </div>
+</div>
+
+<div class="card-container">
+  <div class="card card-small" tabindex="0">
+    <svg
+      class="material-icons"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+    >
+      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+    </svg>
+    Add new Employee
+  </div>
+</div>
