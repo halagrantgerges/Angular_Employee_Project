@@ -8,7 +8,11 @@
     </button>
   </div>
   <div class="col">
-    <button class="btn btn-danger my-sm-5" (click)="deleteEmployees()">
+    <button
+      class="btn btn-danger my-sm-5"
+      (click)="deleteEmployees()"
+      [disabled]="entriesService.employeesEntries.length == 0"
+    >
       Delete Employees
     </button>
   </div>
@@ -28,7 +32,14 @@
       </thead>
       <tbody>
         <tr *ngFor="let entry of entriesService.employeesEntries">
-          <td>{{ entry.name }}</td>
+          <td>
+            <a [routerLink]="['/entry/' + entry.id]">
+              <span class="detailIcon"> details </span>
+            </a>
+
+            <i class="fa fa-twitter fa-2x"></i>
+            {{ entry.name }}
+          </td>
 
           <td>
             {{ entry.birthDate | date: "dd/MM/yyyy" }}

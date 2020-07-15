@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { EntryService } from '../../models/entry.service';
 @Component({
   selector: 'app-employee',
@@ -6,15 +6,16 @@ import { EntryService } from '../../models/entry.service';
   styleUrls: ['./employee.component.css'],
 })
 export class EmployeeComponent implements OnInit {
-  showProfitShare: boolean = true;
+  @Input() showProfitShare: boolean = true;
   constructor(public entriesService: EntryService) {}
+
+  @Output() toggleParentProfitShareEvent = new EventEmitter();
 
   ngOnInit(): void {}
 
   toggleProfitShare() {
-    this.showProfitShare = !this.showProfitShare;
+    this.toggleParentProfitShareEvent.emit();
   }
-
   deleteEmployees() {
     setTimeout(() => {
       if (this.entriesService.employeesEntries.length > 0) {
