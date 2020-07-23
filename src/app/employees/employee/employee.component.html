@@ -1,39 +1,62 @@
 <div class="card-container">
-  <div class="card card-small" tabindex="0">
-    <svg
-      class="material-icons"
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
+  <div class="card card-small" tabindex="0"></div>
+</div>
+<div class="row">
+  <div class="col">
+    <button class="btn btn-primary my-sm-5" (click)="toggleProfitShare()">
+      Show Profit Share
+    </button>
+  </div>
+  <div class="col">
+    <button
+      class="btn btn-danger my-sm-5"
+      (click)="deleteEmployees()"
+      [disabled]="entriesService.employeesEntries.length == 0"
     >
-      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-    </svg>
-
-    <div class="row">{{ entriesService.employeesEntries[0].name }}</div>
-
-    <div class="row">
-      {{ entriesService.employeesEntries[0].birthDate | date: "dd/MM/yyyy" }}
-    </div>
-
-    <div class="row">{{ entriesService.employeesEntries[0].gender }}</div>
-    <div class="row">
-      {{ entriesService.employeesEntries[0].profitShare | percent }}
-    </div>
+      Delete Employees
+    </button>
   </div>
 </div>
+<div class="row">
+  <div class="container">
+    <table class="table container">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Birth Date</th>
+          <th scope="col">Gender</th>
+          <th scope="col" [hidden]="!showProfitShare">
+            Profit Share
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entry of entriesService.employeesEntries">
+          <td>
+            <a [routerLink]="['/entry/' + entry.id]">
+              <span class="detailIcon"> details </span>
+            </a>
 
-<div class="card-container">
-  <div class="card card-small" tabindex="0">
-    <svg
-      class="material-icons"
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
+            <i class="fa fa-twitter fa-2x"></i>
+            {{ entry.name }}
+          </td>
+
+          <td>
+            {{ entry.birthDate | date: "dd/MM/yyyy" }}
+          </td>
+
+          <td>{{ entry.gender }}</td>
+          <td [hidden]="!showProfitShare">
+            {{ entry.profitShare | percent }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div
+      class="alert-danger"
+      *ngIf="entriesService.employeesEntries.length == 0"
     >
-      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-    </svg>
-    Add new Employee
+      No Employees To Show
+    </div>
   </div>
 </div>

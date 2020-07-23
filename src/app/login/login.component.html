@@ -1,0 +1,31 @@
+<div *ngIf="identitySvc.loggedIn; else notLoggedIn" class="card-body">
+  <button (click)="logout()">log me out</button>
+</div>
+
+<ng-template #notLoggedIn>
+  <div class="card-header text-left">
+    <h5><i class="fas fa-sign-in-alt">Login</i></h5>
+  </div>
+  <div class="card-body">
+    <form class="form-inline" #loginForm="ngForm">
+      <label for="userName" class="sr-only">User Name</label>
+      <input
+        type="text"
+        id="userName"
+        class="form-control my-1 mr-sm-2"
+        required
+        autocomplete="false"
+        placeholder="user name"
+        [(ngModel)]="identitySvc.userName"
+        name="userName"
+      />
+      <button
+        class="btn btn-primary my-1"
+        (click)="login()"
+        [disables]="loginForm.form.invalid"
+      >
+        Login
+      </button>
+    </form>
+  </div>
+</ng-template>

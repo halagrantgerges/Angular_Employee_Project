@@ -1,0 +1,78 @@
+<div class="card-container">
+  <div class="card card-small" tabindex="0">
+    <div class="row">
+      <span>
+        <svg
+          class="material-icons"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+        </svg>
+
+        new Employee
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header text-left"><h5>New employee Entry</h5></div>
+  <div class="card-body">
+    <form class="form-inline" #entryForm="ngForm">
+      <label for="name" class="sr-only"> Name</label>
+      <input
+        [(ngModel)]="model.name"
+        type="text"
+        id="name"
+        autocomplete="off"
+        placeholder="Employee Name"
+        class="form-control my-1 mr-sm-2"
+        name="name"
+      />
+
+      <label for="birthDate" class="sr-only"> Birth Date</label>
+      <input
+        [(ngModel)]="model.birthDate"
+        type="date"
+        id="birth"
+        autocomplete="off"
+        placeholder="birthDate"
+        class="form-control my-1 mr-sm-2"
+        name="birthDate"
+      />
+
+      <label for="name" class="sr-only"> Gender</label>
+      <input
+        [(ngModel)]="model.gender"
+        type="text"
+        id="gender"
+        autocomplete="off"
+        placeholder="Gender"
+        class="form-control my-1 mr-sm-2"
+        name="gender"
+      />
+
+      <label for="profit" *ngIf="showProfitShare" class="sr-only">
+        Profit</label
+      >
+      <input
+        [(ngModel)]="model.profitShare"
+        *ngIf="showProfitShare"
+        type="number"
+        id="profit"
+        autocomplete="off"
+        placeholder="Profit"
+        class="form-control my-1 mr-sm-2"
+        name="profitShare"
+      />
+      {{ showProfitShare }}
+
+      <button class="btn btn-primary" (click)="createEntry(); resetForm()">
+        Save
+      </button>
+    </form>
+  </div>
+</div>

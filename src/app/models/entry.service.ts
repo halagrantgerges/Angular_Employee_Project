@@ -36,6 +36,15 @@ export class EntryService {
   constructor() {
     this.sortEntries();
   }
+
+  public getEntries(): Entry[] {
+    return this.employeesEntries;
+  }
+
+  public addEntry(entry: Entry) {
+    this.employeesEntries.push(entry);
+    this.sortEntries();
+  }
   private sortEntries() {
     /*
     let Array1 = [ 1, 2, 3]; //1,2,3

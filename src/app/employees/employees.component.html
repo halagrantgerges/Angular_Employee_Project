@@ -1,12 +1,15 @@
-<p>Employees List:</p>
+<h2>Employees List:</h2>
 
-<app-employee></app-employee>
-<hr />
-<app-employee></app-employee>
-<hr />
-<app-employee></app-employee>
-<hr />
-<app-employee></app-employee>
-<hr />
-<app-employee></app-employee>
-<hr />
+<div class="container">
+  <app-employee
+    [showProfitShare]="showProfitShareParent"
+    (toggleParentProfitShareEvent)="toggleParentProfitShare()"
+  ></app-employee>
+</div>
+
+<div class="container">
+  <app-employee-entry
+    [showProfitShare]="showProfitShareParent"
+    (create)="createNewEntry($event)"
+  ></app-employee-entry>
+</div>
